@@ -1,0 +1,62 @@
+<header>
+    <div class='header-menu flex justify-between px-8 py-0'>
+        <div>
+            <ul class='shopping-navbar'>
+                {% for link in linklists['shopping-menu'].links %}
+                    <li>
+                        {{ link.title | link_to: link.url }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <ul class='left-navbar'>
+                {% for link in linklists['secondary-menu'].links %}
+                    <li>
+                        {{ link.title | link_to: link.url }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <a href='/'>
+                <img
+                    width='80'
+                    height='80'
+                    loading='lazy'
+                    src='{{ 'a.png' |  asset_url }}'
+                >
+            </a>
+        </div>
+        <div>
+            <ul class='right-navbar'>
+                {% for link in linklists['main-menu'].links %}
+                    <li>
+                        {{ link.title | link_to: link.url }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <ul>
+                {% if shop.customer_accounts_enabled %}
+                    {% if customer %}
+                        <li>
+                            <a href='/account'>Account</a>
+                        </li>
+                        <li>
+                            {{ 'Log out' | customer_logout_link }}
+                        </li>
+                    {% else %}
+                        <li>
+                            {{- 'Register' | customer_register_link -}}
+                        </li>
+                        <li>
+                            {{ 'Log in ' | customer_login_link }}
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>

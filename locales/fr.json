@@ -1,8 +1,8 @@
 {
-  "general": {
-    "404": {
-      "title": "Pas trouvé",
-      "subtext_html": "La page que vous cherchez n'existe pas."
+    "general": {
+        "404": {
+            "title": "Pas trouvé",
+            "subtext_html": "La page que vous cherchez n'existe pas."
+        }
     }
-  }
 }

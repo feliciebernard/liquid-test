@@ -1,16 +1,28 @@
 {
-  "name": "shopify",
-  "version": "1.0.0",
-  "description": "",
-  "main": "postcss.config.js",
-  "scripts": {
-    "tw": "npx tailwindcss -i ./templates/tailwind.css -o ./assets/tailwind.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.10"
-  }
+    "name": "shopify",
+    "version": "1.0.0",
+    "description": "",
+    "main": "postcss.config.js",
+    "scripts": {
+        "tw": "npx tailwindcss -i ./templates/tailwind.css -o ./assets/tailwind.css --watch",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format": "prettier --write ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@shopify/prettier-plugin-liquid": "^1.5.0",
+        "prettier": "^3.3.3",
+        "tailwindcss": "^3.4.10"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true,
+        "plugins": [
+            "@shopify/prettier-plugin-liquid"
+        ]
+    }
 }

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.announcement-bar li {
+    @apply text-base p-1;
+}
+
+.header-menu div {
+    @apply items-center;
+}
+
+.header-menu div ul {
+    @apply flex;
+}
