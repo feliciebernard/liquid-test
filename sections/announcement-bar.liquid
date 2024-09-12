@@ -1,17 +1,17 @@
 {% if section.settings['show-announcement'] %}
     <section>
-        <div class='announcement-bar flex justify-center items-center'>
-            <ul class='announcement-bar flex items-center'>
+        <div class='announcement-bar'>
+            <div class='announcement-inner'>
                 {% if section.blocks.size == 0 %}
-                    <li>La nature vous veut du bien</li>
+                    <div>La nature vous veut du bien</div>
                 {% else %}
                     {% for block in section.blocks %}
-                        <li>
+                        <div class='slide-tex' id='text{{ forloop.index }}'>
                             <a href='{{ block.settings.link }}'>{{ block.settings.text }}</a>
-                        </li>
+                        </div>
                     {% endfor %}
                 {% endif %}
-            </ul>
+            </div>
         </div>
     </section>
 {% endif %}
@@ -20,8 +20,54 @@
     .announcement-bar {
       background: {{ section.settings.background }};
       color: {{ section.settings.text_color }};
+      position: relative;
+      height: 50px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .announcement-inner {
+      position: relative;
+      width: 100%;
+    }
+
+    .slide-tex {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: black;
+      padding: 20px;
+      transition: left 0.5s ease-in-out;
+      left: -100%;
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const texts = Array.from(document.querySelectorAll('[id^="text"]'))
+        let currentIndex = 0
+
+        function slideToMiddle(element) {
+            element.style.left = '40%'
+        }
+
+        function resetPosition(element) {
+            element.style.left = '-100%'
+        }
+
+        function slideText() {
+            resetPosition(texts[currentIndex])
+            currentIndex = (currentIndex + 1) % texts.length
+            slideToMiddle(texts[currentIndex])
+        }
+
+        slideToMiddle(texts[currentIndex])
+
+        setInterval(slideText, 3000)
+    })
+</script>
 
 {% schema %}
 {
